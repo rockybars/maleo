@@ -8,6 +8,14 @@ The extension is still a bare `Makefile` inside the src directory, I'll update i
 
 ![glib](http://g.recordit.co/s97AmmE1PG.gif)
 
+## flags
+
+```
+--debug
+```
+
+![debug](http://g.recordit.co/86id9vqeSK.gif)
+
 # license 
 MIT
 
