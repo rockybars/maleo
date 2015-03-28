@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>hello</title>
+</head>
+<body>
+<center>
+<h2>Hello! We're using GLib-<span id="glib-version"></span></h2>
+<br/>
+<p>-maleo</p>
+</center>
+<script>
+  var GLib = imports.gi.GLib;
+  var glibVersion = GLib.MAJOR_VERSION + '.' + GLib.MINOR_VERSION + '.' + GLib.MICRO_VERSION;
+  document.getElementById('glib-version').innerHTML = glibVersion;
+</script>
+</body>
+</html>
