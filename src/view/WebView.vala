@@ -9,6 +9,7 @@ class WebView : WebKit.WebView {
     );
     var settings = get_settings();
     settings.set("javascript-can-open-windows-automatically", true);
+    settings.set("enable-developer-extras", config.enable_developer_extras);
     // FIXME: load from universal uris, even handling a custom uri
     load_uri("file://" + config.directory + "/" + config.content);
   }

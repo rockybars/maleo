@@ -62,6 +62,12 @@ public class ConfigXML {
     default = null;
   }
 
+  public bool enable_developer_extras {
+    get;
+    set;
+    default = false;
+  }
+
   public ConfigXML(string path) {
     Parser.init ();
     doc = Parser.parse_file (path + "/config.xml");

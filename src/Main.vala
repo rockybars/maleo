@@ -3,6 +3,7 @@ public class Main : Gtk.Application {
   private MainWindow mainWindow;
   
   private static bool print_version = false;
+  private static bool enable_developer_extras = false;
 
   private Main() {
     Object (application_id: Maleo.APP_ID, flags: ApplicationFlags.HANDLES_COMMAND_LINE);
@@ -60,6 +61,7 @@ public class Main : Gtk.Application {
         stderr.printf("Error\n");
         return 0;
       }
+      config.enable_developer_extras = enable_developer_extras;
       show_window(config);
     }
     return 0;
@@ -67,6 +69,7 @@ public class Main : Gtk.Application {
   
   static const OptionEntry[] entries = {
     { "version", 'v', 0, OptionArg.NONE, out print_version, N_("Print current app version."), null },
+    { "debug", 'v', 0, OptionArg.NONE, out enable_developer_extras, N_("Enable developer extras."), null },
     { null }
   };
 }
