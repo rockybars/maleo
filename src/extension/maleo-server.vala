@@ -1,6 +1,5 @@
 [DBus (name = "id.blankon.Maleo")]
 public class MaleoServer : Object {
-  private WebKit.WebPage page;
   unowned Seed.Engine engine;
 
   [DBus (visible = false)]
