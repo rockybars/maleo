@@ -1,7 +1,5 @@
 [DBus (name = "id.blankon.Maleo")]
 public class MaleoServer : Object {
-  unowned Seed.Engine engine;
-
   [DBus (visible = false)]
   public void on_bus_acquired(DBusConnection connection) {
     try {
@@ -11,13 +9,25 @@ public class MaleoServer : Object {
     }   
   }
 
+  private static unowned Seed.Value maleo_version(
+    Seed.Context ctx,
+    Seed.Object function,
+    Seed.Object this_object,
+    size_t argc,
+    Seed.Value[] argv,
+    Seed.Exception exception) {
+      // FIXME: get from Utils.vala, take out the contants to another file
+      return Seed.Value.from_string(ctx, "2.0.0", null);
+  } 
+
   [DBus (visible = false)]
   public void on_page_created(WebKit.WebExtension extension, WebKit.WebPage page) {
-    var world = WebKit.ScriptWorld.get_default();
-    world.window_object_cleared.connect((the_world, the_page, the_frame) => {
+    WebKit.ScriptWorld.get_default().window_object_cleared.connect((the_world, the_page, the_frame) => {
       unowned Seed.GlobalContext ctx = 
-	(Seed.GlobalContext) the_frame.get_javascript_context_for_script_world(world);
-      engine = Seed.init_with_context(0, "", ctx);
+	(Seed.GlobalContext) the_frame.get_javascript_context_for_script_world(the_world);
+      unowned Seed.Engine engine = Seed.init_with_context(null, ctx);
+      // test
+      Seed.create_function((Seed.Context) engine.context, "maleoVersion", (Seed.FunctionCallback) MaleoServer.maleo_version, (Seed.Object) engine.global);
     });
   }
 }
