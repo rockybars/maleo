@@ -21,7 +21,7 @@ public class MaleoServer : Object {
       (unowned Seed.Value)[] version_args = {version};
       if (argc > 0 && Seed.Value.is_function(ctx, (Seed.Object) argv[0]))
       	Seed.Object.call(ctx, (Seed.Object) argv[0], this_object, version_args, null);
-      return Seed.Value.from_int64(ctx, argc, null);
+      return version;
   } 
 
   [DBus (visible = false)]
