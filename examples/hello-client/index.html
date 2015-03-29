@@ -10,9 +10,10 @@
 <p>-maleo</p>
 </center>
 <script>
- var version = maleoVersion();
- document.getElementById('version').innerHTML = version;
- 
+function setVersion(version) {
+  document.getElementById("version").innerHTML = version;
+}
+maleoVersion(setVersion);
 </script>
 </body>
 </html>

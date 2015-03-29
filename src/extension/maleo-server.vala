@@ -16,8 +16,12 @@ public class MaleoServer : Object {
     size_t argc,
     Seed.Value[] argv,
     Seed.Exception exception) {
-      // FIXME: get from Utils.vala, take out the contants to another file
-      return Seed.Value.from_string(ctx, "2.0.0", null);
+      // FIXME: get from Utils.vala, take out the constants to another file
+      unowned Seed.Value version = Seed.Value.from_string(ctx, "2.0.0", null);
+      (unowned Seed.Value)[] version_args = {version};
+      if (argc > 0 && Seed.Value.is_function(ctx, (Seed.Object) argv[0]))
+      	Seed.Object.call(ctx, (Seed.Object) argv[0], this_object, version_args, null);
+      return Seed.Value.from_int64(ctx, argc, null);
   } 
 
   [DBus (visible = false)]

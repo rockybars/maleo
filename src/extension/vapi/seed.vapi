@@ -33,7 +33,7 @@ namespace Seed {
 	}
 	[CCode (cheader_filename = "seed.h")]
 	public class Object : Seed.Value {
-		public static unowned Seed.Value call (Seed.Context ctx, Seed.Object object, Seed.Object @this, size_t argument_count, Seed.Value[] arguments, Seed.Exception exception);
+		public static unowned Seed.Value call (Seed.Context ctx, Seed.Object object, Seed.Object @this, [CCode (array_length_name = "argument_count", array_length_pos = 3.9)] Seed.Value[]? arguments, Seed.Exception? exception);
 		public static unowned string copy_property_names (Seed.Context ctx, Seed.Object object);
 		public void* get_private ();
 		public static unowned Seed.Value get_property (Seed.Context ctx, Seed.Object object, string name);
