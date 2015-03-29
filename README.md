@@ -11,6 +11,12 @@ The extension is still a bare `Makefile` inside the src directory, I'll update i
 ## flags
 
 ```
+--version
+```
+
+Get current `maleo` version number.
+
+```
 --debug
 ```
 
