@@ -1,3 +1,4 @@
 *.swp
 *.so
+*.c
 maleo-server.vapi
