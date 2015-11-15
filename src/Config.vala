@@ -17,6 +17,12 @@ public class ConfigXML {
     private set;
     default = null;
   }
+  
+  public string protocol {
+    get;
+    private set;
+    default = "file://";
+  }
 
   /* Holds the directory of the application
   where the runtime needs to look into */
